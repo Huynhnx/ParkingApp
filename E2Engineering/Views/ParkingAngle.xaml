@@ -1,0 +1,132 @@
+﻿<Window x:Class="ParkingApp.Views.ParkingAngle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParkingApp.Views" xmlns:viewmodels="clr-namespace:ParkingApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ParkingAngleViewModel}"
+        mc:Ignorable="d"
+        Title="Parking Angle" Height="450" Width="1200" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Parking Arc Length" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox IsReadOnly="True" Width="200" Margin="10,10" Text="{Binding ParkingArcLength,StringFormat={}{0:F4},Mode=TwoWay}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Number Of Spots" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" Text="{Binding NumberOfSpot, UpdateSourceTrigger=PropertyChanged}" Margin="10,10" PreviewTextInput="NumberValidationTextBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Parking Stall Width" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox IsReadOnly="True" Text="{Binding ParkingStallWidth,StringFormat={}{0:F4}, UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="10,10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Parking Depth" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" Text="{Binding ParkingDepth, UpdateSourceTrigger=LostFocus}" Margin="10,10" PreviewTextInput="NumberValidationTextBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Parking Point Offset" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" Text="{Binding ParkingPointOffset, UpdateSourceTrigger=LostFocus}" Margin="10,10" PreviewTextInput="NumberValidationTextBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Wheel Stop Length" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" IsEnabled="{Binding WheelStopRequired, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox"
+                         Text="{Binding WheelStopLength, UpdateSourceTrigger=LostFocus}" Margin="10,10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Wheel Stop Depth" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" IsEnabled="{Binding WheelStopRequired, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox"
+                         Text="{Binding WheelStopDepth, UpdateSourceTrigger=LostFocus}"  Margin="10,10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Wheel Stop Offset" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Width="200" IsEnabled="{Binding WheelStopRequired, Mode=TwoWay}" PreviewTextInput="NumberValidationTextBox"
+                         Text="{Binding WheelStopOffset, UpdateSourceTrigger=LostFocus}" Margin="10,10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Start Number" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding StartNumber, UpdateSourceTrigger=LostFocus}" Width="200" Margin="10,10" PreviewTextInput="NumberValidationTextBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <CheckBox IsChecked="{Binding WheelStopRequired, Mode=TwoWay}" VerticalAlignment="Center" Content="Wheel Stop Required" Height="24" Margin="10,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <GroupBox Header="Parking Line Point Requires">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox IsChecked="{Binding ParkingLinePointStart,Mode=TwoWay}" Content="Start" Grid.Row="0" VerticalAlignment="Center"/>
+                    <CheckBox IsChecked="{Binding ParkingLinePointEnd,Mode=TwoWay}" Content="End" Grid.Row="1" VerticalAlignment="Center"/>
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <GroupBox Header="Wheel Stop Point Required">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox IsEnabled="{Binding WheelStopRequired, Mode=TwoWay}" IsChecked="{Binding WheelStopPointStart,Mode=TwoWay}" Content="Start" Grid.Row="0" VerticalAlignment="Center"/>
+                    <CheckBox IsEnabled="{Binding WheelStopRequired,Mode=TwoWay}" IsChecked="{Binding WheelStopPointEnd,Mode=TwoWay}" Content="End" Grid.Row="1" VerticalAlignment="Center"/>
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="6" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Width="80" Height="30" Margin="0,0,0,0" Content="Create Arc" Command="{Binding CreateArcCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+                </Button>
+                <Button Width="80" Height="30" Margin="10,0,0,0" Content="Select Arc" Command="{Binding SelectPointCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+                </Button>
+                <Button Width="80" Height="30" Margin="10,0,0,0" Content="Ok" Command="{Binding OkCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+                </Button>
+                <Button Width="80" Height="30" Margin="10,0,0,0" Content="Cancel" Command="{Binding CancelCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Image Grid.Column="2" Grid.RowSpan="7">
+            <Image.Source>
+                <ImageSource>/ParkingApp;component/Resources/ParkArcIns.png</ImageSource>
+            </Image.Source>
+        </Image>
+    </Grid>
+</Window>

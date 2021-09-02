@@ -1,0 +1,45 @@
+﻿<Window x:Class="ParkingApp.Views.ExportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParkingApp.Views"
+        mc:Ignorable="d"
+        Title="ExportView" Height="200" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<Button Grid.Column="0" Grid.Row="0" Content="Select Parking Spot"
+                Height="40" Width="120" Command="{Binding SelectParkingSpotCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+            </Button>
+        <Button Grid.Column="1" Grid.Row="0" Content="Select Addition Points"
+                Height="40" Width="120" Command="{Binding SelectAdditionPointCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+        </Button >
+        <Button Grid.Column="0" Grid.Row="1" Content="Cancel"
+                Height="40" Width="120"
+                Command="{Binding CancelCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+        </Button>-->
+        <CheckBox Content="Parking Point" IsChecked="{Binding ParkingPoint, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            </CheckBox>
+        <CheckBox Content="WheelStop Point" IsChecked="{Binding WheelStopPoint, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+        </CheckBox>
+        <CheckBox Content="Addition Point" Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+        </CheckBox>
+        <CheckBox Content="Combine File" IsChecked="{Binding Combine, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+        </CheckBox>
+        <Button Grid.Column="1" Grid.Row="2" Content="Export" Height="30" Width="100"
+                Command="{Binding ExportCmd}"  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type Window}}}">
+        </Button>
+    </Grid>
+</Window>
